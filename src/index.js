@@ -99,25 +99,21 @@ class Game extends React.Component {
         if (res[i]) {
           const raw = Math.ceil((i+1)/3)
           const col = (i+1)-(raw-1)*3
-          return (`${raw} ${col}`)
+          return (`raw: ${raw} col: ${col}`)
         }
       }
-      return res
     }
 
     render() {
         const history = this.state.history
         const current = history[this.state.stepNumber]
-        let previous
-        if(this.state.stepNumber) {
-          previous = history[this.state.stepNumber-1]
-        }
         const winner = calculateWinner(current.squares)
         let desc
         const moves = history.map((step, move) => {
 
-          if (move&&this.state.stepNumber) {
-            desc = `Go to move #${move} ${this.moveLocation(current.squares, previous.squares)}`
+
+          if (move && this.state.stepNumber) {
+            desc = `Go to move #${move} ${this.moveLocation(history[move].squares, history[move-1].squares)}`
           } else {
             desc = 'Go to game start'
           }
