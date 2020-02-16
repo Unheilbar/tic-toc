@@ -21,30 +21,30 @@ function Square(props) {
         />
       );
     }
-  
-    render() { 
-      return (
-        <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
-        </div>
-      );
+
+    createBoard = () => {
+      const board = []
+      let count = 0
+      for (let j = 0; j < 3; j++){
+        let row = []
+        for (let i = 0; i < 3; i++) {
+          row.push(this.renderSquare(count))
+          count=count+1
+        }
+        board.push(<div className="board-row" key={(j)}>{row}</div>)
+      }
+      return board
     }
-  }
-  
+
+
+
+    render()  {
+
+      return (
+        <div>{this.createBoard()}</div>
+      )
+    }
+} 
 class Game extends React.Component {
     constructor(props) {
         super(props)
