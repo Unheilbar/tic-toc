@@ -5,7 +5,7 @@ import './index.css'
 
 function Square(props) {
     return (
-      <button className="square" onClick={props.onClick}>
+      <button className="square" onClick={props.onClick} key={props.key}>
         {props.value}
       </button>
     );
@@ -18,6 +18,7 @@ function Square(props) {
         <Square
             value={this.props.squares[i]}
             onClick={() => this.props.onClick(i)}
+            key={i}
         />
       );
     }
@@ -28,7 +29,7 @@ function Square(props) {
       for (let j = 0; j < 3; j++){
         let row = []
         for (let i = 0; i < 3; i++) {
-          row.push(this.renderSquare(count))
+          row.push(<>{this.renderSquare(count)}</>)
           count=count+1
         }
         board.push(<div className="board-row" key={(j)}>{row}</div>)
