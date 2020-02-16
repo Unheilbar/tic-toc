@@ -119,7 +119,8 @@ class Game extends React.Component {
           }
           return (
                   <li key={move}>
-                      <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                      {move !== (history.length-1) && <button onClick={() => this.jumpTo(move)}>{desc}</button>}
+                      {move === (history.length-1) && <button onClick={() => this.jumpTo(move)}><strong>{desc}</strong></button>}
                   </li>
             )
         })
