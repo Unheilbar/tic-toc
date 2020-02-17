@@ -32,6 +32,10 @@ body {
     width: 34px;
   }
   
+div.square {
+  border: none;
+}
+
   .square:focus {
     outline: none;
   }
