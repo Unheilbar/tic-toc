@@ -103,7 +103,6 @@ class Game extends React.Component {
 
         if(this.calculateWinner(squares)||squares[i])
         {
-            console.log(squares)
             return
         }
 
